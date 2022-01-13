@@ -1,0 +1,10 @@
+.game-screen{
+    margin:0 !important;
+    padding:0 !important;
+    width: 100%;
+    height: 100vh;
+    background-color: #FFEEAD;
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+}

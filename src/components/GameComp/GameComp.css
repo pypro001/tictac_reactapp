@@ -1,0 +1,35 @@
+.MainGameCont{
+    margin-top: 2vh;
+}
+.MainGameCont #gameScreen {
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+.MainGameCont #gameScreen .gameContainer{
+    background-color:#FFEEAD;
+    display: grid;
+    width: 400px;
+    height:400px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    padding: 3px;
+    border: 1px solid #e7b901;
+    border-radius:6px;
+
+   
+}
+.MainGameCont #gameScreen .gameContainer .grid-item{
+   border: 2px solid #e7b901;
+   box-shadow:inset 2px 2px 3px 1px rgba(231, 185, 1, 0.589),inset -4px -4px 4px 1px rgb(231, 185, 1);
+   border-radius: 3px;
+   color: #D9534F;
+   font-size: 6em;
+   font-weight: bold;
+   text-align: center;
+    
+}

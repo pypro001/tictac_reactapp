@@ -1,0 +1,26 @@
+.GameFooter{
+    bottom: 0;
+    left: 0;
+    height:12vh;
+    width:100%;
+    position: fixed;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #393E46;
+    color: #FFAD60;
+    font-weight: bold;
+    font-size: 1.6em;
+}
+.GameFooter .vs{
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #D9534F;
+    font-size: 2.5em;
+}
+.GameFooter .score{
+    margin-left: 6px;
+    margin-right: 6px;
+    color: #8946A6;
+    font-size: 1.6em;
+}
