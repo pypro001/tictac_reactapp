@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './GameScreen.css'
+import { getDatabase, ref, onValue, set,update} from "firebase/database";
 
 import Auxilary from '../../../hoc/auxilary.js'
 import GameHeader from '../../../components/HeaderComp/HeaderComp.js'
@@ -9,6 +10,16 @@ import Modal from '../../../components/UI/Modal/Modal.js'
 import GameOverComp from '../../../components/GameOverComp/GameOverComp.js'
 
 class GameScreen extends Component {
+    constructor(props) {
+        super(props);
+        this.db = getDatabase();
+        this.starCountRef = ref(this.db, 'f33bfc53/arr');
+         onValue(this.starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data)
+      });
+      console.log(props)
+    }
     Player1 = {
         name: "Player_1",
         roll: "X"   
@@ -122,8 +133,7 @@ class GameScreen extends Component {
         this.setState({gameOver:true})
         console.log("player win",msg)
     }
-   
-   
+    
     playAgain = ()=>{
         this.setState({arr:[["", "", ""],["", "", ""],["", "", ""]]});
         this.setState({greenIt:{it1:"",it2:"",it3:""}});
