@@ -24,3 +24,15 @@
     color: #8946A6;
     font-size: 1.6em;
 }
+@media only screen 
+   and (max-width : 600px) {
+    .GameFooter{
+        font-size: 1.3em;
+    }
+    .GameFooter .vs{
+        font-size: 1.5em;
+    }
+    .GameFooter .score{
+        font-size: 1.2em;
+    }
+}

@@ -10,6 +10,8 @@
 }
 
 .GameHeader #currentPlayer {
+    margin: 20px;
+    font-size: 1.2em;
     text-align: center;
 }
 .GameHeader #currentPlayer #txtTurn{

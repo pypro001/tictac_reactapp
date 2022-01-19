@@ -18,6 +18,8 @@ export default function Lobby ( props){
      onValue(gameStart, (snapshot) => {
     const data = snapshot.val();
     if(data){
+        localStorage.setItem("serverId", serverId);
+        localStorage.setItem("iam",player1Name);
         navigate("/game-screen")
     }
   });
@@ -28,7 +30,17 @@ export default function Lobby ( props){
             gameStart:false,
             player1: player1,
             player2: "",
-            arr: [["","",""],["","",""],["","",""]]
+            arr: [["","",""],["","",""],["","",""]],
+            currentPlayer: { name: player1,roll: "X"},
+            P1_score: 0,
+            P2_score: 0,
+            COUNT: 0,
+            greenIt: {
+                it1: "",
+                it2: "",
+                it3: ""
+            },
+            gameOver: false,
         });
       }
 
@@ -39,7 +51,7 @@ export default function Lobby ( props){
 
 
     return(
-        <div>
+        <div className="lobby">
        <div>game code : {serverId}</div>
        <div>copy</div>
        <div>Ones your friend join, Game Automatic start!</div>
