@@ -1,14 +1,22 @@
+import React,{useEffect} from 'react';
 import './GameOverComp.css'
-const gameOverComp = (props)=>{
+const GameOverComp = (props)=>{
+  let msg,p1name,p2name,score,score2 = "somthing went wrong"
+  useEffect(()=>{
+    console.log(props.gameOverData)
+  })
+  if(props.gameOverData){
+    ( {msg,p1name,p2name,score,score2} = {...props.gameOverData});
+  }
+ 
    return(
     <div className="GameOverComp">
-    <div>__PlayerName-- Win!!</div>
+    <div>{msg}</div>
     <h2>Total Score:</h2>
       <div className="playerScore">
-          <h3>__PlayerName__: 0 </h3>
-          <h3>__PlayerName__: 1 </h3>
+          <h3>{p1name}: {score} </h3>
+          <h3>{p2name}: {score2} </h3>
       </div>
-      <div className="greetMsg"> Well done __PlayerName__ :0</div>
       <div className="gameOverBtns">
           <button onClick={props.playAgain}>Play Again</button>
           <button>Exit Game</button>
@@ -16,4 +24,4 @@ const gameOverComp = (props)=>{
     </div>
    )
  }
- export default gameOverComp;
+ export default GameOverComp;

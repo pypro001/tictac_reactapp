@@ -52,6 +52,7 @@ export default function Lobby ( props){
                 it3: ""
             },
             gameOver: false,
+            
         });
       }
 
