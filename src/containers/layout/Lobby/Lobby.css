@@ -1,0 +1,83 @@
+.lobby{
+    margin:0 !important;
+    padding:0 !important;
+    width: 100%;
+    height: 100vh;
+    background-color: #FFEEAD;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-content: center;
+}
+.lobby .lobby-container{
+    margin-top:10em ;
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+   align-content: center;
+   align-items: center;
+}
+.lobby .game-code{
+    margin-top:10px;
+    
+}
+.lobby .lobby-container .game-code .txt-gameCode{
+    font-size: x-large;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.lobby .game-code .inputCode{
+    width: 140px;
+    height: 40px;
+    margin: 8px auto;
+    font-size: x-large;
+    text-align: center;
+    border: 2px solid #876445;
+    background-color: #D7A5EA;
+    border: .44em ridge rgba(170, 50, 220, .6);
+    border-radius: 20px 0px 0px 0px;
+}
+.lobby .game-code .copy-btn{
+    width: 140px;
+    height: 60px;
+    font-size: x-large;
+    text-align: center;
+    background-color: #EEC373;
+    border: .5em ridge rgba(170, 50, 220, .6);
+    border-radius: 0px 0px 20px 0px;
+    border-left: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+.lobby .game-code .copy-btn:hover{
+    transform: scale(1.1);  
+    box-shadow: 0px 4px 6px 1px rgba(74, 65, 65, 0.67);
+}
+.lobby .lobby-container .share-btn{
+    width: 180px;
+    height: 50px;
+    font-size: x-large;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: #EEC373;
+    border: .5em ridge #694E4E;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 0px 4px 6px 1px rgba(74, 65, 65, 0.67);
+}
+.lobby .lobby-container .share-btn:hover{
+    transform: scale(1.1);  
+}
+.lobby .lobby-container .share-btn .whatsapp__share-button{
+    width:100%;
+    height:100%;
+    
+}
+.lobby .lobby-container .wait-msg{
+    
+    font-size: x-large;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}

@@ -82,7 +82,10 @@ class HomeScreen extends Component {
                     </div>
 
                     <button className="btn" onClick={this.btnJoinGame}>Join game</button>
-                    <div> OR </div>
+                    <h2  style={{
+                   margin:'5px',
+                   fontWeight:'bold'
+                 }}> OR </h2>
                     <button className="btn" onClick={this.btnCreateGame}>Create game</button>
 
                 </div>
