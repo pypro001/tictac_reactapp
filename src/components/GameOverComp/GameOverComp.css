@@ -7,3 +7,52 @@
   align-items: center;
   align-content: center;
 }
+.GameOverComp .msg{
+  font-size:1.5em;
+  font-weight: bold;
+  margin:10px;
+  color: #2C272E;
+  text-shadow: 2px 2px 2px #06335b5c;
+}
+.GameOverComp .total-score{
+  margin:2px;
+  color: #D9534F;
+  text-decoration: underline;
+}
+.GameOverComp  .playerScore{
+  color: #820CAC;
+  font-size: x-large;
+}
+.GameOverComp .gameOverBtns button{
+  width: 118px;
+  height: 40px;
+  font-size: large;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid #880707;
+  background-color: #D9534F;
+  border-radius: 12px;
+  margin: 14px ;
+  box-shadow: 0px 4px 6px 1px rgba(114, 2, 2, 0.479);
+  color:#570606;
+}
+.GameOverComp .gameOverBtns button:hover{
+  transform: scale(1.1)
+}
+.GameOverComp .gameOverBtns .play-again{
+  background-color: #63b36d;
+    color: #064635;
+    border: 2px solid #064635;
+    box-shadow: 0px 4px 6px 1px rgba(53, 102, 59, 0.55);
+}
+@media only screen 
+   and (max-width : 380px) {
+    .GameOverComp .gameOverBtns button{
+       width:110px;
+       margin: 10px ;
+
+   }
+   .GameOverComp .msg{
+    font-size:1.2em;
+  }
+}

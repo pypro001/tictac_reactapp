@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content:center;
     align-content: center;
+    font-family: 'Fredoka One', cursive;
 }
 .lobby .lobby-container{
     margin-top:10em ;
@@ -78,6 +79,6 @@
     
     font-size: x-large;
     text-align: center;
-    margin-top: 20px;
-    font-weight: bold;
+    margin-top: 30px;
+    
 }

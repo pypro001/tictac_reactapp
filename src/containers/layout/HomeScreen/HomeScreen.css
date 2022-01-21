@@ -6,10 +6,11 @@
     background-color: #FFEEAD;
     display: flex;
     justify-content:center;
+    font-family: 'Fredoka One', cursive;
     
 }
 .HomeScreen .container{
-    margin-top:10em ;
+    margin-top:6em ;
     display: flex;
     flex-direction: column;
    justify-content: center;
@@ -18,7 +19,8 @@
    
 }
 .HomeScreen #app-name{
-    font-size:2em;
+    font-family: 'Titan One';
+    font-size:2.5em;
     font-weight: bold;
     color:#D9534F;
 }
@@ -52,4 +54,16 @@ border-radius: 20px;
 }
 .HomeScreen .container .btn:hover{
     transform: scale(1.1);  
+}
+.HomeScreen .container .comp-name{
+    bottom: 0;
+    margin: 10px;
+    text-align: center;
+    position: fixed;
+}
+.HomeScreen .container .comp-name h4{
+    color:rgba(169, 169, 169, 0.822)
+}
+.HomeScreen .container .comp-name h3{
+    color:#4983F9;
 }

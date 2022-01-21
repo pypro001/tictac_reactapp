@@ -3,8 +3,9 @@
     padding:0 !important;
     width: 100%;
     height: 100vh;
-    background-color: #FFEEAD;
+    background-color: #F9E28A;
     display: flex;
     justify-content:center;
     flex-direction: column;
+    font-family: 'Fredoka One', cursive;
 }

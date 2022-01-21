@@ -1,5 +1,6 @@
 .MainGameCont{
     margin-top: 2vh;
+    font-family: 'Titan One';
 }
 .MainGameCont #gameScreen {
     width:100%;
@@ -29,7 +30,6 @@
    border-radius: 3px;
    color: #D9534F;
    font-size: 6em;
-   font-weight: bold;
    text-align: center;
     
 }

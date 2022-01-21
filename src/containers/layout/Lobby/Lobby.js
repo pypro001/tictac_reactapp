@@ -51,6 +51,7 @@ export default function Lobby ( props){
                 it2: "",
                 it3: ""
             },
+            winner:"",
             gameOver: false,
             
         });

@@ -27,10 +27,10 @@
 @media only screen 
    and (max-width : 600px) {
     .GameFooter{
-        font-size: 1.3em;
+        font-size: 1.2em;
     }
     .GameFooter .vs{
-        font-size: 1.5em;
+        font-size: 1.4em;
     }
     .GameFooter .score{
         font-size: 1.2em;

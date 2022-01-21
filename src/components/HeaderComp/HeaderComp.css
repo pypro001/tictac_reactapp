@@ -20,5 +20,6 @@
 }
 .GameHeader #currentPlayer #turnText{
     display: inline-block;
-    color:#570530;   
+    color: #B95701;
+    font-size: 1.8em;  
 }

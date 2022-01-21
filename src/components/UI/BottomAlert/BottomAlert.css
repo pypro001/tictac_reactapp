@@ -4,9 +4,10 @@
     position: fixed;
     bottom:0;
     left:0;
-    background-color: azure;
+    background-color: rgb(248, 241, 143);
     box-shadow: 0px 0px 6px 1.3px rgba(114, 2, 2, 0.479);
     border-top: 2px solid gold;
+    z-index: 200;
 }
 .bottom-alert .alert-msg{
     font-size:1.2em;

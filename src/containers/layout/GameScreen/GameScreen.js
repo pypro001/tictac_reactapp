@@ -8,15 +8,14 @@ import GameFooter from '../../../components/FooterComp/FooterComp.js'
 import GameMainCont from '../../../components/GameComp/GameComp.js'
 import Modal from '../../../components/UI/Modal/Modal.js'
 import GameOverComp from '../../../components/GameOverComp/GameOverComp.js'
+import BottomAlert from '../../../components/UI/BottomAlert/BottomAlert.js';
 
 
 class GameScreen extends Component {
     constructor(props) {
         super(props)
          this.serverId = localStorage.getItem('serverId'); 
-         this.iam = localStorage.getItem('iam');
-         this.gameOverMsg = {};
-        
+         this.iam = localStorage.getItem('iam');   
     }
     Player1 = {
         name: "__Player1",
@@ -40,10 +39,12 @@ class GameScreen extends Component {
             it2: "",
             it3: ""
         },
+        winner:"",
         gameOver: false,
-        dataFatched: false
+        dataFatched: false,
+        alertMsg:""
     }
-    
+    //firebase init
     componentDidMount()  {
         const db = getDatabase();
         const serverRef = ref(db, `${this.serverId}/`);
@@ -52,6 +53,18 @@ class GameScreen extends Component {
            this.updateSate(data)
         });
     }
+//setting alert
+    setAlertMsg() {
+        if(this.state.alertMsg){
+            setTimeout(()=>{
+                this.hideAlert();
+            },2000)
+        }
+    }
+    // deleting alert
+    hideAlert() {
+        this.setState({alertMsg:""})
+    }
     updateSate = (data)=>{
         this.setState({currentPlayer: data.currentPlayer}) //current Player
         this.setState({arr:data.arr}) //arr
@@ -59,6 +72,7 @@ class GameScreen extends Component {
         this.setState({P2_score: data.P2_score}) //p2 score
         this.setState({COUNT: data.COUNT}) //count
         this.setState({greenIt: data.greenIt}) //greenIT
+        this.setState({winner: data.winner}) //winner
         this.setState({gameOver: data.gameOver}) //gameOver
     }
     gameInit = () => {
@@ -102,23 +116,26 @@ class GameScreen extends Component {
         if(this.iam === currentState.currentPlayer.name){
         const position = event.target.id;
         const gameCount = currentState.COUNT;
-        this.setState({ COUNT: gameCount + 1 })
-        this.updateToFirebase("COUNT",gameCount + 1)
+       
         const myarr = [...this.state.arr];
         [px, py] = position.split("-");
         if (myarr[px][py].length === 0) {
             myarr[px][py] = this.state.currentPlayer.roll;
             this.changePlayerHandler();
             this.updateToFirebase("arr", myarr)
+            this.setState({ COUNT: gameCount + 1 })
+            this.updateToFirebase("COUNT",gameCount + 1)
             this.gameManager(myarr, currentState);
-            if (currentState.COUNT === 8) {
+            if (currentState.COUNT >= 8) {
                 this.gameOver("Match drow !", "", "", "", currentState);
             }
         } else {
+            this.setState({alertMsg:"already filled !"})
             console.log("already filled !")
         }
         this.setState({ arr: myarr });
     }else{
+        this.setState({alertMsg:"Other player turn !"})
         console.log("other player turn !")
     }
     }
@@ -176,42 +193,19 @@ class GameScreen extends Component {
         this.setState({ greenIt: { it1: item1, it2: item2, it3: item3 } });
         if (msg === "X") {
             let updatedScore = currentState.P1_score + 1;
-            let msg = "🎉✨ You WON 💥😁"
-            if(this.iam !== this.Player1.name){
-                msg = `${this.Player1.name} WON 💥😁`
-            }
-            this.gameOverMsg = { 
-                msg: msg,
-                p1name: this.Player1.name,
-                p2name: this.Player2.name,
-                score:  updatedScore,
-                score2: currentState.P2_score
-            }
             this.updateToFirebase("P1_score",updatedScore)
+            this.updateToFirebase("winner",this.Player1.name)
             this.setState({ P1_score: updatedScore })
+            this.setState({ winner: this.Player1.name })
         } else if (msg === "0") {
             let updatedScore = currentState.P2_score + 1;
-            let msg = "🎉✨ You WON 💥😁"
-            if(this.iam !== this.Player2.name){
-                msg = `${this.Player2.name} WON 💥😁`
-            }
-            this.gameOverMsg = { 
-                msg: msg,
-                p1name: this.Player1.name,
-                p2name: this.Player2.name,
-                score:  currentState.P1_score,
-                score2: updatedScore
-            }
             this.updateToFirebase("P2_score",updatedScore)
+            this.updateToFirebase("winner",this.Player2.name)
             this.setState({ P2_score: updatedScore })
+            this.setState({ winner: this.Player2.name })
         }else{
-            this.gameOverMsg = { 
-                msg: `😮 Match drow, Play Again 🔥🔥😏`,
-                p1name: this.Player1.name,
-                p2name: this.Player2.name,
-                score:  currentState.P1_score,
-                score2: currentState.P1_score
-            }
+            this.updateToFirebase("winner","drow")
+            this.setState({ winner: "drow" })
         }
        
         this.updateToFirebase("gameOver",true)
@@ -226,23 +220,38 @@ class GameScreen extends Component {
         this.updateToFirebase("arr", arr)
         this.updateToFirebase("greenIt", greenIt)
         this.updateToFirebase("COUNT", 0)
+        this.updateToFirebase("winner", "");
         this.updateToFirebase("gameOver", false)
 
         this.setState({ arr: arr });
         this.setState({ greenIt: greenIt });
         this.setState({ COUNT: 0 });
+        this.setState({ winner: "" });
         this.setState({ gameOver: false });
-        this.gameOverData = {}
+        
     }
 
     render() {
         this.gameInit();
+        this.setAlertMsg() ;
         return (
             <Auxilary>
                 <div className="game-screen">
                     <Modal backdropShow={this.state.gameOver} >
-                        <GameOverComp playAgain={this.playAgain} gameOverData = {this.gameOverMsg}/>
+                        <GameOverComp playAgain={this.playAgain} gameOverData = {{
+                            iam:this.iam,
+                            winner:this.state.winner,
+                            player1:{
+                                name:this.Player1.name,
+                                score:this.state.P1_score
+                            },
+                            player2:{
+                                name:this.Player2.name,
+                                score:this.state.P2_score
+                            }
+                        }}/>
                     </Modal>
+                    <BottomAlert msg={this.state.alertMsg}/>
                     <GameHeader playerInfo={this.state.currentPlayer} />
                     <GameMainCont array={this.state.arr} clicked={(event) => { this.boxClick(event) }} greenIt={this.state.greenIt} />
                     <GameFooter player1={this.Player1} player2={this.Player2} p1score={this.state.P1_score} p2score={this.state.P2_score} />

@@ -74,7 +74,7 @@ class HomeScreen extends Component {
                     </Modal>
                     <BottomAlert msg={this.state.alertMsg}/>
                     <h1 id="app-name">
-                        The X'0 online
+                        The X'0 Online
                     </h1>
                     <div className="inputs">
                         <input type="text" id="playerName" placeholder="Enter your name" ref={this.playerName} />
@@ -87,9 +87,12 @@ class HomeScreen extends Component {
                    fontWeight:'bold'
                  }}> OR </h2>
                     <button className="btn" onClick={this.btnCreateGame}>Create game</button>
-
+                    <div className="comp-name">
+                       <h4>By</h4> 
+                       <h3>dolpy Tech.</h3> 
+                    </div>
                 </div>
-
+                
             </main>
         )
     }
